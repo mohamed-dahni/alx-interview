@@ -1,4 +1,16 @@
+#!/usr/bin/python3
+
 def island_perimeter(grid):
+    """
+    Count the perimeter of an island
+
+    Args:
+        grid (list): A list of lists of integers representing an island
+
+    Return: 
+        The perimeter of the island defined in the grid
+    """
+    
     perimeter = 0
     
     for ri, row in enumerate(grid):
