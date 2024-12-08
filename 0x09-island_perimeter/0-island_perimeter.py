@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+"""Define the island perimeter finding function"""
 
 def island_perimeter(grid):
-    """
-    Count the perimeter of an island
+    """Count the perimeter of an island
 
     Args:
         grid (list): A list of lists of integers representing an island
