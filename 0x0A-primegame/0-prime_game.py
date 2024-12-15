@@ -12,11 +12,8 @@ def sieve_of_eratosthenes(n):
                 sieve[multiple] = False
     return [num for num, is_prime in enumerate(sieve) if is_prime]
 
-
 def simulate_game(n):
-    """
-    Simulate a game for the given n and return the winner ('Maria' or 'Ben').
-    """
+    """Simulate a game for the given n and return the winner ('Maria' or 'Ben')."""
     primes = sieve_of_eratosthenes(n)
     nums = [True] * (n + 1)  # True means the number is still in the game
 
@@ -27,25 +24,33 @@ def simulate_game(n):
 
     # Game simulation, alternating turns between Maria and Ben
     turn = 0  # 0 for Maria, 1 for Ben
-    while any(nums[prime] for prime in primes):
+    while True:
+        # Find the next available prime number
+        available_prime = None
         for prime in primes:
-            if nums[prime]:  # If this prime is still available
-                # Remove the prime and its multiples
-                for multiple in range(prime, n + 1, prime):
-                    nums[multiple] = False
-                break  # Exit loop once a move is made
+            if nums[prime]:
+                available_prime = prime
+                break
+        
+        if available_prime is None:
+            # No primes left to play
+            break
 
-        turn = 1 - turn  # Switch turns
+        # Remove the prime and its multiples
+        for multiple in range(available_prime, n + 1, available_prime):
+            nums[multiple] = False
+
+        # Switch turns
+        turn = 1 - turn
 
     # If turn == 0, Maria has won (because Ben couldn't play)
     return 'Ben' if turn == 0 else 'Maria'
-
 
 def isWinner(x, nums):
     """
     Decide the winner
     """
-    
+
     maria_wins = 0
     ben_wins = 0
 
@@ -58,10 +63,11 @@ def isWinner(x, nums):
                 maria_wins += 1
             else:
                 ben_wins += 1
-
+    
     if maria_wins > ben_wins:
         return 'Maria'
     elif ben_wins > maria_wins:
         return 'Ben'
     else:
         return None
+
