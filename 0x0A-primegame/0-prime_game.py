@@ -40,11 +40,14 @@ def isWinner(x, nums):
     ben_wins = 0
     
     for n in nums:
-        winner = simulate_game(n)
-        if winner == 'Maria':
-            maria_wins += 1
-        else:
+        if n <= 1:  # Handle case where there are no primes
             ben_wins += 1
+        else:
+            winner = simulate_game(n)
+            if winner == 'Maria':
+                maria_wins += 1
+            else:
+                ben_wins += 1
     
     if maria_wins > ben_wins:
         return 'Maria'
