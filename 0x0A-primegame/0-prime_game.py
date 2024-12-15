@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module for prime game"""
 
 def sieve_of_eratosthenes(n):
     """Generate a list of primes up to n using the Sieve of Eratosthenes."""
