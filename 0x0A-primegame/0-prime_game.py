@@ -42,6 +42,10 @@ def simulate_game(n):
 
 
 def isWinner(x, nums):
+    """
+    Decide the winner
+    """
+    
     maria_wins = 0
     ben_wins = 0
 
